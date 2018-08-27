@@ -1,0 +1,26 @@
+<div class="container">
+
+  <div class="card text-center mb-3" *ngIf="recordedited">
+
+    <div class="card-body">
+      <h5 class="card-title">Edited Record Details</h5>
+      <p class="text-success">You last have edited record for employee with Id as {{employeeId}} on {{currentDate | date:'medium'}} </p>
+    </div>
+
+  </div>
+
+    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngFor="let employee of employeeList">
+        <ngb-panel title="{{employee.firstname}}">XYZ
+            <ng-template ngbPanelContent>
+              <app-employee-details [employee]="employee" (editedemployess)="rcveditedemployee($event)" >
+              </app-employee-details>
+            </ng-template>
+        </ngb-panel>
+
+    </ngb-accordion>
+
+
+
+
+</div>
+

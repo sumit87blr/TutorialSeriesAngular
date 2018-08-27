@@ -4,17 +4,19 @@
       <div class="card">
         <h4 class="card-header">Login</h4>
         <div class="card-body">
-          <form (submit)="onsubmit">
+          <form (submit)="onlogin(login)" #login="ngForm">
             <div class="form-group">
               <label for="">Email</label>
-              <input type="text" class="form-control" placeholder="Email id">
+              <input type="text" class="form-control" name="emailId" placeholder="Email id" ngModel #email="ngModel" required email>
+              <span class="text-danger small" *ngIf="!email.valid && email.touched">Email Id is required</span>
             </div>
             <div class="form-group">
               <label for="">Password</label>
-              <input type="password" class="form-control" placeholder="Password">
+              <input type="password" class="form-control" name="password" placeholder="Password" ngModel #password="ngModel" required>
+              <span class="text-danger small" *ngIf="!password.valid && password.touched">Password is required</span>
             </div>
             <div class="form-group">
-              <button class="btn btn-primary">Login</button>
+              <button class="btn btn-primary" [disabled]="!login.valid" >Login</button>
             </div>
           </form>
         </div>
